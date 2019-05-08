@@ -3,6 +3,7 @@
 namespace App\Http;
 
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
+use Laravel\Passport\Http\Middleware\CheckClientCredentials;
 
 class Kernel extends HttpKernel
 {
@@ -19,6 +20,8 @@ class Kernel extends HttpKernel
         \App\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
         \App\Http\Middleware\TrustProxies::class,
+
+        \App\Http\Middleware\ParseMultipartFormDataInputForNonPostRequests::class,
     ];
 
     /**
@@ -41,6 +44,12 @@ class Kernel extends HttpKernel
             'throttle:60,1',
             'bindings',
         ],
+
+        'api.common' => [
+            'client',
+            'businessFormatOutput',
+            'requestLogger',
+        ],
     ];
 
     /**
@@ -60,6 +69,10 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+
+        'client' => CheckClientCredentials::class,
+        'businessFormatOutput' => \App\Http\Middleware\BusinessFormatOutput::class,
+        'requestLogger' => \App\Http\Middleware\RequestLogger::class,
     ];
 
     /**
