@@ -8,7 +8,6 @@
 
 namespace App\Api\Controllers\V1\Authorization;
 
-
 use App\Api\Controllers\V1\V1Controller;
 use App\Exceptions\BusinessException;
 use App\Repositories\Passport\UserRepository;
@@ -25,7 +24,6 @@ class UserController extends V1Controller
         try{
             // 校验数据有效性
             $postData = $request->post();
-
             $permission = $userRepository->save($postData);
 
             if(!is_null($permission)){//业务逻辑执行成功
