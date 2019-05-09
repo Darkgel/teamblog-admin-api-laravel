@@ -22,7 +22,7 @@ class ApiAuthorization
             return $next($request);
         }
 
-        if (!$user->allPermissions()->first(function ($permission) use ($request) {
+        if (!$user->allServicePermissions()->first(function ($permission) use ($request) {
             return $permission->shouldPassThrough($request);
         })) {
             throw new UnauthorizedHttpException('unauthorized!');

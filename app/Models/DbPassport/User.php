@@ -110,6 +110,21 @@ class User extends Authenticatable
     }
 
     /**
+     * Get all service permissions of user.
+     *
+     * @return mixed
+     */
+    public function allServicePermissions()
+    {
+        return $this->roles()->with([
+            'permissions' => function ($query) {
+                $service = Service::where('name', config('app.service_name', 'admin'))->first();
+                return $query->where('service_id', $service->id);
+            }
+        ])->get()->pluck('permissions')->flatten()->merge($this->permissions);
+    }
+
+    /**
      * Check if user has permission.
      *
      * @param $ability
