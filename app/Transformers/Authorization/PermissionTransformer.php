@@ -18,6 +18,7 @@ class PermissionTransformer extends AppTransformer
             'id' => $permission->id,
             'name' => $permission->name,
             'slug' => $permission->slug,
+            'serviceId' => $permission->service_id,
             'httpMethod' => $permission->httpMethod,
             'httpPath' => $permission->httpPath,
             'updatedAt' => $permission->updatedAt->timestamp,

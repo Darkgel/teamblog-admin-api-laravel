@@ -20,8 +20,8 @@ class TmpController extends V1Controller
 
         $user = $guard->user();
 
-        $client = $guard->client();
+        //$client = $guard->client();
 
-        dd($user, $client);
+        dd($user);
     }
 }

@@ -54,7 +54,7 @@ class Role extends BaseModel
     {
         $pivotTable = 'authorization_role_permissions';
 
-        $relatedModel = 'authorization_permissions';
+        $relatedModel = Permission::class;
 
         return $this->belongsToMany($relatedModel, $pivotTable, 'role_id', 'permission_id');
     }

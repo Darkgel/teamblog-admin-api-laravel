@@ -47,6 +47,7 @@ class Kernel extends HttpKernel
 
         'api.common' => [
             'client',
+            'apiAuthorization',
             'businessFormatOutput',
             'requestLogger',
         ],
@@ -73,6 +74,7 @@ class Kernel extends HttpKernel
         'client' => CheckClientCredentials::class,
         'businessFormatOutput' => \App\Http\Middleware\BusinessFormatOutput::class,
         'requestLogger' => \App\Http\Middleware\RequestLogger::class,
+        'apiAuthorization' => \App\Http\Middleware\ApiAuthorization::class,
     ];
 
     /**
