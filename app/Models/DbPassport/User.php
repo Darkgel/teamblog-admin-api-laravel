@@ -116,12 +116,15 @@ class User extends Authenticatable
      */
     public function allServicePermissions()
     {
+        $service = Service::where('name', config('app.service_name', 'admin'))->first();
+
         return $this->roles()->with([
-            'permissions' => function ($query) {
-                $service = Service::where('name', config('app.service_name', 'admin'))->first();
+            'permissions' => function ($query) use ($service) {
                 return $query->where('service_id', $service->id);
             }
-        ])->get()->pluck('permissions')->flatten()->merge($this->permissions);
+        ])->get()->pluck('permissions')->flatten()->merge(
+            $this->permissions()->where('service_id', $service->id)->get()
+        );
     }
 
     /**
