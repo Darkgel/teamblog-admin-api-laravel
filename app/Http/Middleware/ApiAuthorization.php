@@ -45,7 +45,7 @@ class ApiAuthorization
 
         return collect($excepts)
             ->map(function($path = ''){
-                $prefix = '/'.trim(config('admin.route.prefix'), '/');
+                $prefix = '/';
 
                 $prefix = ($prefix == '/') ? '' : $prefix;
 
