@@ -8,15 +8,13 @@
 
 namespace App\Api\Controllers\V1\Authorization;
 
-
-use App\Api\Controllers\V1\V1Controller;
 use App\Exceptions\BusinessException;
 use App\Repositories\Passport\PermissionRepository;
 use App\Transformers\Authorization\PermissionTransformer;
 use Dingo\Api\Http\Request;
 use Enum\ErrorCode;
 
-class PermissionController extends V1Controller
+class PermissionController extends BaseController
 {
     public function test(){
         try{
@@ -66,7 +64,6 @@ class PermissionController extends V1Controller
         try{
             // 校验数据有效性
             $postData = $request->post();
-
             $permission = $permissionRepository->save($postData);
 
             if(!is_null($permission)){//业务逻辑执行成功

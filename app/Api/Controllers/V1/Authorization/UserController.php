@@ -8,14 +8,13 @@
 
 namespace App\Api\Controllers\V1\Authorization;
 
-use App\Api\Controllers\V1\V1Controller;
 use App\Exceptions\BusinessException;
 use App\Repositories\Passport\UserRepository;
 use App\Transformers\Authorization\UserTransformer;
 use Dingo\Api\Http\Request;
 use Enum\ErrorCode;
 
-class UserController extends V1Controller
+class UserController extends BaseController
 {
     /**
      * 创建用户，于授权无关

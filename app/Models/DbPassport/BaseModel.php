@@ -13,5 +13,5 @@ use App\Models\AppModel;
 
 class BaseModel extends AppModel
 {
-    protected $connectionString = 'db_passport';
+    protected $connection = 'db_passport';
 }

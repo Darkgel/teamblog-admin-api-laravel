@@ -18,6 +18,7 @@ use Illuminate\Support\Str;
  * @property string $slug
  * @property string $httpMethod
  * @property string $httpPath
+ * @property int $service_id 对应authorization_services表中的id
  */
 class Permission extends BaseModel
 {
@@ -26,7 +27,7 @@ class Permission extends BaseModel
     /**
      * @var array
      */
-    protected $fillable = ['name', 'slug', 'httpMethod', 'httpPath'];
+    protected $fillable = ['name', 'slug', 'httpMethod', 'httpPath', 'service_id'];
 
     /**
      * @var array

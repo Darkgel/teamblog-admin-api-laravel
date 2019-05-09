@@ -30,6 +30,12 @@ $api->version('v1', ['namespace' => 'App\Api\Controllers\V1', 'middleware' => ['
             $api->post('/', 'UserController@save');
             $api->post('/with-authorization', 'UserController@saveWithAuthorization');
         });
+
+        $api->group(['prefix' => 'services'], function (Router $api){
+            $api->get('/', 'ServiceController@index');
+            $api->get('{id}', 'ServiceController@detail');
+            $api->post('/', 'ServiceController@save');
+        });
     });
 
     $api->group(['prefix' => 'tmp'], function (Router $api){

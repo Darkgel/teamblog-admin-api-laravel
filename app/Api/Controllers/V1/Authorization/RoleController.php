@@ -8,15 +8,13 @@
 
 namespace App\Api\Controllers\V1\Authorization;
 
-
-use App\Api\Controllers\V1\V1Controller;
 use App\Exceptions\BusinessException;
 use App\Repositories\Passport\RoleRepository;
 use App\Transformers\Authorization\RoleTransformer;
 use Dingo\Api\Http\Request;
 use Enum\ErrorCode;
 
-class RoleController extends V1Controller
+class RoleController extends BaseController
 {
     public function detail(){
 
